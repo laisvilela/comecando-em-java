@@ -19,22 +19,7 @@ public class Program {
 		int numeroCidades = sc.nextInt();
 		System.out.println();
 
-		List<Cidade> listaCidades = new ArrayList<>(numeroCidades);
-
-		for (int i = 1; i <= numeroCidades; i++) {
-			System.out.println("Informações #" + i + ": ");
-			System.out.print("Código da cidade: ");
-			int codigo = sc.nextInt();
-			System.out.print("Veículos de passeio: ");
-			int veiculosPasseio = sc.nextInt();
-			System.out.print("Número de Acidentes: ");
-			int numeroAcidentes = sc.nextInt();
-			System.out.println();
-
-			Cidade cidade = new Cidade(codigo, veiculosPasseio, numeroAcidentes);
-			listaCidades.add(cidade);
-
-		}
+		List<Cidade> listaCidades = obterDadosCidades(sc, numeroCidades);
 
 		Cidade cidadeMinimaInicial = listaCidades.get(0);
 
@@ -90,6 +75,26 @@ public class Program {
 		System.out.println("Total de cidades com menos de 2000 veículos: " + numeroCidades2);
 		System.out.printf("Média de acidentes em cidades com menos de 2000 veículos: %.2f%n", mediaAcidentes);
 
+	}
+
+	private static List<Cidade> obterDadosCidades(Scanner sc, int numeroCidades) {
+		List<Cidade> listaCidades = new ArrayList<>(numeroCidades);
+
+		for (int i = 1; i <= numeroCidades; i++) {
+			System.out.println("Informações #" + i + ": ");
+			System.out.print("Código da cidade: ");
+			int codigo = sc.nextInt();
+			System.out.print("Veículos de passeio: ");
+			int veiculosPasseio = sc.nextInt();
+			System.out.print("Número de Acidentes: ");
+			int numeroAcidentes = sc.nextInt();
+			System.out.println();
+
+			Cidade cidade = new Cidade(codigo, veiculosPasseio, numeroAcidentes);
+			listaCidades.add(cidade);
+
+		}
+		return listaCidades;
 	}
 
 }
